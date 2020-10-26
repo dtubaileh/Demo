@@ -26,13 +26,13 @@ import {
 
 import {Provider} from 'react-redux';
 import {store} from './Redux/store';
-import ViewComponent from './Redux/ViewComponent';
+import {MyReduxApp} from './MyReduxApp';
 
 const App: () => React$Node = () => {
   return (
     
     <Provider store={store}>
-     <ViewComponent/>
+     <MyReduxApp/>
       </Provider>
     
   );
