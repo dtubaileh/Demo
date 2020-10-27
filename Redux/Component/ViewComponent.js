@@ -25,13 +25,13 @@ const ViewComponent = ({stateStore,Delete,Add,navigation}) => {
             )}
             keyExtractor={(item) => item.id.toString()}
           />
-      
+     
 
         <FAB style={{backgroundColor:'red'}} small  label="show new Redux app" onPress={() =>
             navigation.navigate('NewRedux')
           } />
           <FAB style={styles.fab} small icon="plus" label="Add new note" onPress={() =>
-            {}
+            navigation.navigate('AddNote')
           } />
       </View>
     </>
