@@ -1,19 +1,23 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {connect} from 'react-redux';
-import {Add,Delete} from '../action';
+import {MyContextApp} from './MyContextApp';
 import {TextInput, FAB} from 'react-native-paper';
 
 
 
-const AddStateComponent = ({Add,navigation}) => {
+export const AddStateContextComponent = ({navigation}) => {
  
+    const [stateStore, setStateStore] = useContext(MyContextApp);
+
+    
     const [noteTitle, setNoteTitle] = useState('');
     const [noteValue, setNoteValue] = useState('');
 
+    
     const save = ()=>{
         console.log("save");
-        Add(noteTitle,noteValue);
+        const newState = [...stateStore,{id:stateStore.length +1,title:noteTitle,description:noteValue}];
+        setStateStore(newState);
         navigation.goBack()
     }
 
@@ -53,13 +57,7 @@ const AddStateComponent = ({Add,navigation}) => {
 
 
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  Add:(title,description)=>{dispatch(Add(title,description))}
-  };
-};
 
-export default connect(null,mapDispatchToProps)(AddStateComponent);
 
 
 const styles = StyleSheet.create({

@@ -37,12 +37,6 @@ const App: () => React$Node = () => {
       <NewReduxApp/>
     </MyReduxApp>
     </NewProvider>
-   
-      
-    
-     
-      
-    
   );
 };
 

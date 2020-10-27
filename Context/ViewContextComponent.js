@@ -1,13 +1,18 @@
-import React from 'react';
-import {StyleSheet, View, TouchableHighlight,FlatList} from 'react-native';
-import {connect} from 'react-redux';
-import {Add,Delete} from '../action';
+import React,{useContext} from 'react';
+import {StyleSheet, View,FlatList} from 'react-native';
+
 import {Text, FAB, List} from 'react-native-paper';
 
+import {MyContextApp} from './MyContextApp';
 
+export const ViewContextComponent = ({navigation}) => {
+  const [stateStore, setStateStore] = useContext(MyContextApp);
 
-const ViewComponent = ({stateStore,Delete,Add,navigation}) => {
-  // console.log('ViewComponent props ', props);
+  const Delete = (id)=>{
+    const newState = stateStore.filter(val => val.id !== id );
+    setStateStore(newState);
+  };
+
   return (
     <>
      
@@ -37,20 +42,6 @@ const ViewComponent = ({stateStore,Delete,Add,navigation}) => {
     </>
   );
 };
-
-
-const mapStateToProps = (state) => {
-  return {stateStore: state};
-};
-//
-const mapDispatchToProps = (dispatch) => {
-  return {Delete: (id)=>dispatch(Delete(id)),
-  Add:(title,description)=>{dispatch(Add(title,description))}
-  };
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(ViewComponent);
-
 
 const styles = StyleSheet.create({
   container: {

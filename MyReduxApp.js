@@ -2,32 +2,33 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ViewComponent from './Redux/Component/ViewComponent';
-import AddStateComponent from './Redux/Component/AddStateComponent';
+import {AddStateContextComponent} from './Context/AddStateContextComponent';
 import {Provider} from 'react-redux';
-import {store} from './Redux/store';
 import {NewReduxApp} from './NewRedux/NewReduxApp' ;
+import {ViewContextComponent} from './Context/ViewContextComponent';
+import {MyContextProvider} from './Context/MyContextApp';
 const Stack = createStackNavigator();
 
 export const MyReduxApp = (props)=>{
 
     return(
-        <Provider store={store}>
+    <MyContextProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={ViewComponent}
+          component={ViewContextComponent}
           options={{ title: 'MyReduxApp', headerStyle: {
             backgroundColor: '#60DBC5',
           }}}
         />
-         <Stack.Screen name="AddNote" component={AddStateComponent} />
+         <Stack.Screen name="AddNote" component={AddStateContextComponent} />
         <Stack.Screen name="NewRedux" component={NewReduxApp} options={{  headerStyle: {
             backgroundColor: 'red',
           }}}/>
       </Stack.Navigator>
     </NavigationContainer>
-    </Provider>
+    </MyContextProvider>
+   
     );
 }
