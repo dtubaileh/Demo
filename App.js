@@ -24,16 +24,24 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {Provider} from 'react-redux';
-import {store} from './Redux/store';
+import {Provider as NewProvider} from 'react-redux';
+import {store as newStore} from './NewRedux/newStore';
 import {MyReduxApp} from './MyReduxApp';
+import {NewReduxApp} from './NewRedux/NewReduxApp';
+
 
 const App: () => React$Node = () => {
   return (
+    <NewProvider store={newStore}>
+       <MyReduxApp>
+      <NewReduxApp/>
+    </MyReduxApp>
+    </NewProvider>
+   
+      
     
-    <Provider store={store}>
-     <MyReduxApp/>
-      </Provider>
+     
+      
     
   );
 };

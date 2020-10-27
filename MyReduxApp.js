@@ -4,12 +4,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ViewComponent from './Redux/Component/ViewComponent';
 import AddStateComponent from './Redux/Component/AddStateComponent';
-
+import {Provider} from 'react-redux';
+import {store} from './Redux/store';
+import {NewReduxApp} from './NewRedux/NewReduxApp' ;
 const Stack = createStackNavigator();
 
-export const MyReduxApp = ()=>{
+export const MyReduxApp = (props)=>{
 
     return(
+        <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -19,8 +22,9 @@ export const MyReduxApp = ()=>{
             backgroundColor: '#60DBC5',
           }}}
         />
-        <Stack.Screen name="Profile" component={AddStateComponent} />
+        <Stack.Screen name="NewRedux" component={NewReduxApp} />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
     );
 }
