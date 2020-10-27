@@ -22,7 +22,9 @@ export const MyReduxApp = (props)=>{
             backgroundColor: '#60DBC5',
           }}}
         />
-        <Stack.Screen name="NewRedux" component={NewReduxApp} />
+        <Stack.Screen name="NewRedux" component={NewReduxApp} options={{  headerStyle: {
+            backgroundColor: 'red',
+          }}}/>
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>

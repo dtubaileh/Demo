@@ -11,7 +11,7 @@ const NewViewComponent = ({stateStore,navigation}) => {
     <>
      
       <View style={styles.container}>
-      <Text>my new state list:</Text>
+      <Text style={{fontSize:30}}>my new state list:</Text>
       <FlatList
             data={stateStore}
             renderItem={({item}) => (
