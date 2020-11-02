@@ -3,7 +3,7 @@ import {StyleSheet, View, TouchableHighlight,FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import {Add,Delete} from '../action';
 import {Text, FAB, List} from 'react-native-paper';
-
+import {ContextSrore} from '../store';
 
 
 const ViewComponent = ({stateStore,Delete,Add,navigation}) => {
@@ -49,7 +49,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(ViewComponent);
+export default connect(mapStateToProps,mapDispatchToProps, null,
+  { context: ContextSrore })(ViewComponent);
 
 
 const styles = StyleSheet.create({

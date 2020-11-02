@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Add,Delete} from '../action';
 import {TextInput, FAB} from 'react-native-paper';
-
+import {ContextSrore} from '../store';
 
 
 const AddStateComponent = ({Add,navigation}) => {
@@ -59,7 +59,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null,mapDispatchToProps)(AddStateComponent);
+export default connect(null,mapDispatchToProps, null,
+  { context: ContextSrore })(AddStateComponent);
 
 
 const styles = StyleSheet.create({
